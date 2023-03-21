@@ -3,7 +3,7 @@ Subtraction Operation ➖
 Multiplication Operation ✖️
 Division Operation ➗
 Modulo Operation %
-Grouping symbols ( usually parenthesis ) ( )
+Grouping symbols ( )
 Assignment operation →
 Equals Operation ==
 Less than operation <
