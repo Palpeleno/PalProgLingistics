@@ -10,8 +10,8 @@ Less than operation <
 Less than or equal to operation ≤
 Greater than operation >
 Greater than or equal to operation ≥ 
-Logical and operation &
+Logical and operation &&
 Logical or operation |
-Variable identifiers  
+Variable identifiers 
 integer literals [0-9] + 
-floating point literals
+floating point literal
