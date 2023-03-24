@@ -38,6 +38,7 @@ class Lexalyzer:
             (r'[_a-zA-Z][_a-zA-Z0-9]*', 'IDENTIFIER'),
             (r'[-+]?[0-9]*\.?[0-9]+', 'NUMBER')
         ]
+
         combined_pattern = '|'.join('(?P<%s>%s)' % pair for pair in regex_patterns)
         token_regex = re.compile(combined_pattern)
         for match in token_regex.finditer(self.text):
