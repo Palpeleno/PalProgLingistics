@@ -9,9 +9,9 @@ class Parser:
     def match(self,expected):
         if self.tokens[self.pos].type == expected:
             self.pos += 1
-            return true
+            return True
         else:
-            return false
+            return False
     def expect(self, expected):
         if not self.match(expected):
             raise Exception(f"Expected '{expected}', found '{self.token[self.pos].value}'")
