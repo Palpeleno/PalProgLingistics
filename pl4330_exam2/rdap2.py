@@ -1,10 +1,10 @@
-class Parser
+class Parser:
     def __init__(self, tokens):
         self.tokens = tokens
         self.current_token = tokens[0]
         self.index = 0
 
-    def parse(self)
+    def parse(self):
         self.stmt()
         if self.current_token != '$':
             raise Exception('parsing Error')        
@@ -18,7 +18,7 @@ class Parser
     def stmt(self):
         if self.peek() == 'if':
             return self.if_stmt()
-        elif self.peek() == '{'
+        elif self.peek() == '{':
             return self.block()
         elif self.peek() == 'DataType':
             return self.declare()
@@ -27,17 +27,17 @@ class Parser
         else:
             return self.assign()
     
-    def if_stmt(self)
-    self.eat('if')
-    self.eat('(')
-    bool_expr = self.bool_expr()
-    self.eat(')')
-    if_block = self.block()
-    else_block = None
-    if self.peek() == 'else':
-        self.eat('else')
-        else_block = self.block()
-    reutrn ('if', bool_expr, if_block, else_block)
+    def if_stmt(self):
+        self.eat('if')
+        self.eat('(')
+        bool_expr = self.bool_expr()
+        self.eat(')')
+        if_block = self.block()
+        else_block = None
+        if self.peek() == 'else':
+            self.eat('else')
+            else_block = self.block()
+        return ('if', bool_expr, if_block, else_block)
 
     def block(self):
         self.eat('{')
@@ -74,7 +74,7 @@ class Parser
             fact = (operator, fact2, fact)
         return fact
 
-    def fact(self)
+    def fact(self):
         if self.peek_type() == 'ID':
             return self.eat_id()
         elif self.peek_type() in ('INT_LIT', 'FLOAT_LIT'):
@@ -109,11 +109,10 @@ class Parser
             booleanOr = ('&&', booleanOr, booleanOr2)
         return booleanOr
     
-    def booleanOr(self)
+    def booleanOr(self):
         expr = self.expr()
         while self.peek() == '||':
             self.eat('||')
             expr2 = self.expr()
  
 
- parse( 2 + 3 - 7 * 1 = x)
