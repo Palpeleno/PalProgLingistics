@@ -40,35 +40,32 @@ class Parser:
     def if_stmt(self):
         self.match('if')
         self.match('(')
-        bool_expr = self.bool_expr()
+        self.bool_expr()
         self.match(')')
-        if_block = self.block()
-        else_block = None
+        self.block()
         if self.tokens[self.index] == 'else':
             self.match('else')
-            else_block = self.block()
-        return ('if', bool_expr, if_block, else_block)
+            self.block()
+        
 
     def block(self):
         self.match('{')
-        stmt_list = self.stmt_list()
-        return ('block', stmt_list)
+        self.stmt_list()
+        
     
     def declare(self):
         self.match('DataType')
-        id_handful = self.match(self.tokens[self.index])
+        self.match(self.tokens[self.index])
         while self.tokens[self.index] == ',':
             self.match(',')
-            id_handful
-        return ('declare', id_handful)
+            self.match(self.tokens[self.index])
+        
 
-#here we are returning function statement of the next valid token, but 
-# is the return statments necessary or can seld.(statment type) be like that stright up 
     def assign(self):                           
-        id = self.match(self.tokens[self.index])
+        self.match(self.tokens[self.index])
         self.match('=')
-        expr = self.expr()
-        return ('assign', id, expr)                 #<--- necessary ?
+        self.expr()
+
 
     def expr(self):
         self.term()
@@ -96,6 +93,8 @@ class Parser:
         else:
             raise Exception(f"Invalid factor: {self.tokens[self.index]}")
 
+
+#start reviewing here! 
     def bool_expr(self):
         bterm = self.bterm()
         while self.peek() in ('>','<','>=', '<='):
