@@ -1,3 +1,7 @@
+
+
+
+    
         
 class Parser:
     def __init__(self, tokens):
@@ -96,33 +100,34 @@ class Parser:
 
 #start reviewing here! 
     def bool_expr(self):
-        bterm = self.bterm()
+        self.bterm()
         while self.peek() in ('>','<','>=', '<='):
-            operator = self.match()
-            bterm2 = self.bterm()
-            bterm = (operator, bterm, bterm2)
-        return bterm
+            self.match()
+        
 
     def bterm(self):
-        booleanAnd = self.booleanAnd()
+        self.booleanAnd()
         while self.peek() in ('==', '!='):
-            operator = self.match()
-            booleanAnd2= self.booleanAnd()
-            booleanAnd = (operator, booleanAnd, booleanAnd2)
-        return booleanAnd
+            self.match()
+            self.booleanAnd()
+            
+        
 
     def booleanAnd(self):
-        booleanOr = self.booleanOr()
+        self.booleanOr()
         while self.peek() == '&&':
             self.match('&&')
-            booleanOr2 = self.booleanOr()
-            booleanOr = ('&&', booleanOr, booleanOr2)
-        return booleanOr
+            self.booleanOr()
+           
+        
     
     def booleanOr(self):
-        expr = self.expr()
+        self.expr()
         while self.peek() == '||':
             self.match('||')
-            expr2 = self.expr()
+            self.expr()
  
 
+test_stmt = 1+3
+
+p1 = Parser(test_stmt)
