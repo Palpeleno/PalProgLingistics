@@ -1,4 +1,8 @@
-
+class Token:
+    def __init__(self,type, value):
+        self.type = type
+        self.value = value
+        
 class Parser:
     def __init__(self, tokens):
         self.tokens = tokens
@@ -118,6 +122,6 @@ class Parser:
             self.expr()
  
 
-tokens = ["DataType", "int", "x", ",", "y", ";", "if", "(", "x", ">", "y", ")", "{", "x", "=", "y", ";", "}", "while", "(", "y", "<", "100", ")", "{", "y", "=", "y", "+", "1", ";", "}", "x", "=", "y", "+", "2", ";"]
+tokens = [ "{", "y", "=", "y", "+", "1", ";", "}", "x", "=", "y", "+", "2", ";"]
 parser = Parser(tokens)
 parser.parse()
