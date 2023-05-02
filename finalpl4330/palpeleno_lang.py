@@ -2,55 +2,66 @@ import re
 
 
 class Token:
-    def __init__(self, value, lexem):
-        self.lexem = lexem
+    def __init__(self, value: int, lexeme: str ):
+        self.lexem = lexeme
         self.value = value
-
+            #constructor for Token object 
+            #accepts string to represent the lexeme of token and symbol for token code
+        #     regex_patterns = [
+        #     (r'➕', 'ADD'),
+        #     (r'➖', 'SUBTRACT'),
+        #     (r'✖️', 'MULTIPLY'),
+        #     (r'➗d', 'DIVIDE'),
+        #     (r'%', 'MODULO'),
+        #     (r'\(', 'LEFT_PAREN'),
+        #     (r'\)', 'RIGHT_PAREN'),
+        #     (r'→', 'ASSIGNMENT'),
+        #     (r'==', 'EQUALS'),
+        #     (r'<', 'LESS_THAN'),
+        #     (r'≤', 'LESS_THAN_EQUAL'),
+        #     (r'>', 'GREATER_THAN'),
+        #     (r'≥', 'GREATER_THAN_EQUAL'),
+        #     (r'&', 'LOGICAL_AND'),
+        #     (r'\|', 'LOGICAL_OR'),
+        #     (r'[_a-zA-Z][_a-zA-Z0-9]*', 'IDENTIFIER'),
+        #     (r'[-+]?[0-9]*\.?[0-9]+', 'NUMBER')
+        # ]
 
 class PalLangComp:
-    def __init__(self, file, index ):
-        self.file = file 
-        self.index = 0
-        file = open("final_test.txt"," r")
-        index = file.read()
-        index = data.split("\n")
-        
-        print(data_into_list)
-        my_file.close()
-        
-        #something from file should = a string 
-        print(index)
-
+    def __init__(self ):
+        pass
+    
+    def read_input_file(self, file: str) -> str:
+        with open(file, "r") as f:
+            input_string = f.read()
+            
         extLex = Lexer()
 
 
     
 class Lexer:
-    def __init__(self,tokens ):
-        self.self = self
-        self.tokens = [Token]
+    def __init__(self, input_str:str ):
+        self.input_str = input_str 
+        self.tokens = []
+        self.poi = 0    # poi = place of intrest as said in most fps open world games 
 
-    def tokenize(self):
-        tokens = []
-        regex_patterns = [
-            (r'➕', 'ADD'),
-            (r'➖', 'SUBTRACT'),
-            (r'✖️', 'MULTIPLY'),
-            (r'➗d', 'DIVIDE'),
-            (r'%', 'MODULO'),
-            (r'\(', 'LEFT_PAREN'),
-            (r'\)', 'RIGHT_PAREN'),
-            (r'→', 'ASSIGNMENT'),
-            (r'==', 'EQUALS'),
-            (r'<', 'LESS_THAN'),
-            (r'≤', 'LESS_THAN_EQUAL'),
-            (r'>', 'GREATER_THAN'),
-            (r'≥', 'GREATER_THAN_EQUAL'),
-            (r'&', 'LOGICAL_AND'),
-            (r'\|', 'LOGICAL_OR'),
-            (r'[_a-zA-Z][_a-zA-Z0-9]*', 'IDENTIFIER'),
-            (r'[-+]?[0-9]*\.?[0-9]+', 'NUMBER')
-        ]
+    def tokenize(self) -> List[Token]:
+        
+        #tracker for current element in the string and checks if at EOL
+    
+        while self.poi < len (self.input_str):
+            current_char = self.input_str[self.poi]
+        
+        #ignore single line comment
+        if current_char == '/' and self.poi + 1 < leg(self.input_str) and self.input_str[self.poi + 1] == '/'
+        
+        #ignore block comment
+        
+        #check for token
+        
+        
+        
+        
 
         combined_pattern = '|'.join('(?P<%s>%s)' % pair for pair in regex_patterns)
         token_regex = re.compile(combined_pattern)
