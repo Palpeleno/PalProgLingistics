@@ -11,19 +11,24 @@ def is_valid_email(email):
 		return False
 	
 	if ".." in email.split("@")[0]:
-	    return False
+		return False
 	  
 	local_part = email.split("@")[0]
-	if local_part.startswith(".") or local_part.endswith:
+
+	if local_part.startswith(".") or local_part.endswith(":"):
 		return False 
+	
 	local_part_pattern = r'^[A-Za-z0-9#%!$‘&+*\-/=?^_`{|}~]'
+	
 	if not re.match(local_part_pattern):
 		return False
+	
 	domain_pattern = r'^[A-Za-z0-9-]+(\.[A-Za-z0-9-])*$'
 	domain_name = email.split("@")[1]
+	
 	if not re.match(domain_pattern, domain_name):
 	    return False
-	return True
+	
 
 
 #9 lets you know if a string is an floating point literal or not
