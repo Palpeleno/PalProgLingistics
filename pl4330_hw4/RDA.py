@@ -21,7 +21,7 @@ class Parser:
         if self.match('IF'):
             self.expect('LPAREN')
             self.bool_expr()
-             self.expect('RPAREN')
+            self.expect('RPAREN')
             if self.match('LBRACE'):
                 self.stmt_list()
                 self.expect('RBRACE')
